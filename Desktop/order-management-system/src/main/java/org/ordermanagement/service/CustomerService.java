@@ -14,8 +14,8 @@ public class CustomerService {
         this.customerDAO = customerDAO;
     }
 
-    public void createCustomer(String name, String email, String phone) {
-        customerDAO.save(new Customer(name, email, phone));
+    public Customer createCustomer(String name, String email, String phone) {
+        return customerDAO.save(new Customer(name, email, phone));
     }
 
     public Customer getCustomer(Long id) {
@@ -26,8 +26,9 @@ public class CustomerService {
         return customerDAO.findAll();
     }
 
-    public void updateCustomer(Customer c) {
-        customerDAO.update(c);
+    public void updateCustomer(Long id) {
+        Customer c =customerDAO.findById(id);
+        customerDAO.update(c.getId());
     }
 
     public void deleteCustomer(Long id) {
