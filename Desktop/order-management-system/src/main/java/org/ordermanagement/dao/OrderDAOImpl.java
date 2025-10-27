@@ -2,49 +2,46 @@ package org.ordermanagement.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import org.ordermanagement.entity.Customer;
-
+import org.ordermanagement.entity.Order;
 import java.util.List;
 
-public class CustomerDAOImpl implements CustomerDAO {
-
+public class OrderDAOImpl implements OrderDAO {
     private final EntityManagerFactory emf;
 
-    public CustomerDAOImpl(EntityManagerFactory emf) {
+    public OrderDAOImpl(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
     @Override
-    public Customer save(Customer customer) {
+    public void save(Order order) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        em.persist(customer);
+        em.persist(order);
         em.getTransaction().commit();
         em.close();
-        return customer;
     }
 
     @Override
-    public Customer findById(Long id) {
+    public Order findById(Long id) {
         EntityManager em = emf.createEntityManager();
-        Customer c = em.find(Customer.class, id);
+        Order o = em.find(Order.class, id);
         em.close();
-        return c;
+        return o;
     }
 
     @Override
-    public List<Customer> findAll() {
+    public List<Order> findAll() {
         EntityManager em = emf.createEntityManager();
-        List<Customer> list = em.createNamedQuery("Customer.findAll").getResultList();
+        List<Order> list = em.createNamedQuery("Order.findAllWithItems").getResultList();
         em.close();
         return list;
     }
 
     @Override
-    public void update(Long id) {
+    public void update(Long order) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        em.merge(id);
+        em.merge(order);
         em.getTransaction().commit();
         em.close();
     }
@@ -53,8 +50,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void delete(Long id) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        Customer c = em.find(Customer.class, id);
-        if (c != null) em.remove(c);
+        Order o = em.find(Order.class, id);
+        if (o != null) em.remove(o);
         em.getTransaction().commit();
         em.close();
     }

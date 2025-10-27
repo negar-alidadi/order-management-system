@@ -3,6 +3,10 @@
              version="3.0">
     <persistence-unit name="order">
         <class>org.ordermanagement.entity.Customer</class>
+        <class>org.ordermanagement.entity.Order</class>
+        <class>org.ordermanagement.entity.OrderItem</class>
+        <class>org.ordermanagement.entity.Product</class>
+
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>

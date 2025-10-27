@@ -5,9 +5,9 @@ import org.ordermanagement.entity.Customer;
 import java.util.List;
 
 public interface CustomerDAO {
-    void save(Customer customer);
+    Customer save(Customer customer);
     Customer findById(Long id);
     List<Customer> findAll();
-    void update(Customer customer);
+    void update(Long customer);
     void delete(Long id);
 }
