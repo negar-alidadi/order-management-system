@@ -6,6 +6,14 @@
         <class>org.ordermanagement.entity.Order</class>
         <class>org.ordermanagement.entity.OrderItem</class>
         <class>org.ordermanagement.entity.Product</class>
+        <class>org.ordermanagement.entity.InventoryTransaction</class>
+        <class>org.ordermanagement.entity.Inventory</class>
+        <class>org.ordermanagement.entity.Warehouse</class>
+        <class>org.ordermanagement.entity.Category</class>
+        <class>org.ordermanagement.entity.ProductImage</class>
+
+
+
 
 
         <properties>
@@ -15,7 +23,7 @@
             <property name="jakarta.persistence.jdbc.password" value="myjava123"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>
